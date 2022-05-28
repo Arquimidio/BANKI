@@ -356,11 +356,22 @@ Most of the technical questions should have a three sentence response in the EUE
   - **Use:**
   - **Example:**
   - **Source:**
-- [ ] Explain why the following doesn't work as an IIFE: `function foo(){ }();`. What needs to be changed to properly make it an IIFE?
-  - **Explanation:**
-  - **Use:**
-  - **Example:**
-  - **Source:**
+- [ x ] Explain why the following doesn't work as an IIFE: `function foo(){ }();`. What needs to be changed to properly make it an IIFE?
+  - **Explanation: porque se escrita como sem os parênteses em volta dela, a função será uma DECLARATION, e não uma EXPRESSION, e DECLARATIONS não retornam nada, ou seja, NÃO RETORNAM A FUNÇÃO QUE ACABOU DE SER CRIADA. O que faz ela se tornar uma EXPRESSION é colocar parênteses em volta dela, e, só então será possível invocá-la imediatamente. Não precisam ser apenas parênteses, é possível criar uma IIFE de VÁRIAS OUTRAS FORMAS.**
+  - **Use: poder criar funções imediatamente invocadas corretamente, o que permite a criação contextos privados para variáveis e valores.**
+  - **Example: **
+   ```
+   function secretData(){
+    const secretCode = '42733100';
+    return {halfCode: secretCode.slice(0, 4)}
+   }(); // Syntax error: unexpected token ")"
+   
+   (function secretData(){
+    const secretCode = '42733100';
+    return {halfCode: secretCode.slice(0, 4)}
+    })() // Works
+   ```
+  - **Source: https://stackoverflow.com/questions/31910216/why-are-parentheses-required-around-javascript-iife#:~:text=The%20version%20of%20IIFE%20that,function%20declaration%20as%20an%20expression.**
 - [ ] What's the difference between a variable that is: `null`, `undefined` or undeclared? How would you go about checking for any of these states?
   - **Explanation:**
   - **Use:**
